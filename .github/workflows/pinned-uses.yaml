@@ -1,0 +1,20 @@
+name: pinned-uses
+
+# krateo-blueprints/charts PUBLISHING.md rule 9: every reusable workflow this repository calls is pinned by commit
+# SHA with a version comment. This repository has no lint workflow, so the shared check gets a workflow of its own.
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  # krateo-blueprints/charts PUBLISHING.md rule 9: every reusable workflow this repository calls is pinned by
+  # commit SHA with a version comment. The shared check refuses any that is not.
+  pinned-uses:
+    permissions:
+      contents: read
+    uses: krateo-blueprints/charts/.github/workflows/pinned-uses.yaml@33c79510d5042e0fcb5227176bd138d993cb4ef6 # 1.2.0
